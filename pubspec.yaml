@@ -17,6 +17,8 @@ dependencies:
   path: 
   audioplayers:
     path: ../audioplayers/audioplayers
+  tuple: ^1.0.3
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -42,6 +44,7 @@ flutter:
   assets:
     - lib/assets/fastspeech2_quan.tflite
     - lib/assets/mb_melgan.tflite
+    - lib/assets/baker_mapper.json
 
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

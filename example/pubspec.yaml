@@ -45,6 +45,7 @@ flutter:
   assets:
     - packages/incredible_tts/assets/mb_melgan.tflite
     - packages/incredible_tts/assets/fastspeech2_quan.tflite
+    - packages/incredible_tts/assets/baker_mapper.json
                                      
   #   - images/a_dot_burr.jpeg
   #   - images/a_dot_ham.jpeg

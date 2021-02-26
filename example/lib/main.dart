@@ -1,10 +1,6 @@
-import 'package:path_provider/path_provider.dart' ;
+import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
-import 'dart:async';
-import 'package:audioplayers/audio_cache.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:audioplayers_platform_interface/method_channel_audioplayers.dart';
-import 'package:flutter/services.dart';
 import 'package:incredible_tts/incredible_tts.dart';
 
 void main() {
@@ -19,9 +15,10 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AudioPlayer _advancedPlayer = AudioPlayer();
 
-
   IncredibleTts _tts = IncredibleTts();
   bool _initialized = false;
+  TextEditingController _pinyinController = TextEditingController();
+  TextEditingController _charController = TextEditingController();
 
   @override
   void initState() {
@@ -48,19 +45,29 @@ class _MyAppState extends State<MyApp> {
                   _initialized = true;
                 });
               }),
-          RaisedButton(
-            child: Text("GO"),
-            onPressed: _initialized == false
-                ? null
-                : () {
-                    _tts.go();
-                  },
+          TextField(
+            controller: _charController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Character',
+            ),
+          ),
+          TextField(
+            controller: _pinyinController,
+            decoration: InputDecoration(
+              border: OutlineInputBorder(),
+              labelText: 'Pinyin',
+            ),
           ),
           RaisedButton(
-            child: Text("PLAY"),
-            onPressed: () async {
-              _advancedPlayer.play((await getTemporaryDirectory()).path + "/foobar.wav");
-            }
+            child: Text("SYNTHESIZE"),
+            onPressed: _initialized == false
+                ? null
+                : () async {
+                    var file = await _tts.synthesize(_charController.text,
+                        _pinyinController.text.split(" "));
+                    _advancedPlayer.play(file.path);
+                  },
           ),
         ])),
       ),
