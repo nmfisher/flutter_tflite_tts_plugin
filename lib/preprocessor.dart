@@ -1,19 +1,17 @@
 import 'dart:convert';
-import 'dart:io';
-
 import 'package:tuple/tuple.dart';
 
 class Preprocessor {
   Map<String, dynamic> _mapper;
-  String _eosId;
+  int _eosId;
   
   Preprocessor(String mapperJson) {
     _mapper = json.decode(mapperJson);
     _eosId = _symbolToId(_eos[0]);
   }
 
-  String _symbolToId(String symbol) {
-    return _mapper["symbol_to_id"][symbol].toString();
+  int _symbolToId(String symbol) {
+    return _mapper["symbol_to_id"][symbol];
   }
 
   Tuple2<String, String> _pinyinDict(String pinyin) {
@@ -116,7 +114,6 @@ class Preprocessor {
       var curChar = character[i];
       print(curChar);
       if (isZH(curChar)) {
-        print("IS ZH");
         if (_pinyinDict(pinyin[j].substring(0, pinyin[j].length - 1)) == null) {
           assert(character[i + 1] == "儿");
           assert(pinyin[j][pinyin[j].length - 2] == "r");
@@ -151,10 +148,10 @@ class Preprocessor {
     return result;
   }
 
-  List<String> textToSequence(String text, List<String> pinyin) {
+  List<int> textToSequence(String text, List<String> pinyin) {
     var phonemes = getPhoneme(text, pinyin);
 
-    var sequence = phonemes.map(_symbolToId).cast<String>().toList();
+    var sequence = phonemes.map(_symbolToId).toList();
     sequence += [_eosId];
     return sequence;
   }

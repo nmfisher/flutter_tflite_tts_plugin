@@ -1,6 +1,6 @@
-# incredible_tts
+# TfLite TTS Plugin
 
-A new flutter plugin project.
+A Flutter plugin to expose [TensorflowTTS](https://github.com/TensorSpeech/TensorFlowTTS/) / TFLite functionality for speech synthesis.
 
 ## Getting Started
 

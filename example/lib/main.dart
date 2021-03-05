@@ -1,7 +1,8 @@
+import 'package:flutter/services.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:incredible_tts/incredible_tts.dart';
+import 'package:tflite_tts/tflite_tts.dart';
 
 void main() {
   runApp(MyApp());
@@ -15,7 +16,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AudioPlayer _advancedPlayer = AudioPlayer();
 
-  IncredibleTts _tts = IncredibleTts();
+  TfliteTts _tts = TfliteTts();
   bool _initialized = false;
   TextEditingController _pinyinController = TextEditingController();
   TextEditingController _charController = TextEditingController();
@@ -23,6 +24,9 @@ class _MyAppState extends State<MyApp> {
   @override
   void initState() {
     super.initState();
+    rootBundle.load("assets/fastspeech2_quan.tflite").then((_) {
+      print("GOT DATA!");
+    });
   }
 
   @override

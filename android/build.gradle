@@ -1,4 +1,4 @@
-group 'com.example.incredible_tts'
+group 'com.avinium.tflite_tts'
 version '1.0-SNAPSHOT'
 
 buildscript {
@@ -32,9 +32,17 @@ android {
     }
     defaultConfig {
         minSdkVersion 16
+        ndk {
+            abiFilters 'armeabi-v7a', 'arm64-v8a'
+        }
     }
     lintOptions {
         disable 'InvalidPackage'
+    }
+    externalNativeBuild {
+        cmake {
+            path "CMakeLists.txt"
+        }
     }
 }
 

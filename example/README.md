@@ -1,6 +1,6 @@
-# incredible_tts_example
+# tflite_tts_example
 
-Demonstrates how to use the incredible_tts plugin.
+Demonstrates how to use the tflite_tts plugin.
 
 ## Getting Started
 
