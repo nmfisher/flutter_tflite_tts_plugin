@@ -55,7 +55,7 @@ static ifstream* vocoder_s;
 
         NSString* outfile = call.arguments[@"outfile"];
         NSLog(@"Got outfile %@", outfile);
-        NSMutableArray* ns_symbolIds = call.arguments[@"symbolIds"];
+        NSArray* ns_symbolIds = call.arguments[@"symbolIds"];
         int numSymbols = [ns_symbolIds count];
         NSLog(@"count %d", numSymbols);
 
