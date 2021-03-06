@@ -21,12 +21,12 @@ class TfliteTts {
   Future initialize() async {
     if (_initialized) return;
 
-    _preprocessor = Preprocessor(await rootBundle
-        .loadString("assets/baker_mapper.json"));
+    _preprocessor =
+        Preprocessor(await rootBundle.loadString("assets/baker_mapper.json"));
 
     var success = await _channel.invokeMethod('initialize');
-    
-    if(success != 0) {
+    print(success);
+    if (success != 0) {
       throw Exception("Unknown exception initializing synthesizer.");
     }
 
@@ -40,7 +40,7 @@ class TfliteTts {
         p.join((await getTemporaryDirectory()).path, "synthesized.wav");
     var success = await _channel.invokeMethod(
         "synthesize", {"symbolIds": symbolIds, "outfile": outfile});
-    if(success != 0) {
+    if (success != 0) {
       throw Exception("Unknown exception synthesizing sentntence.");
     }
 
