@@ -144,7 +144,6 @@ class Preprocessor {
     if (result.last == "#0") result = result.sublist(0, result.length - 1);
     result.add("sil");
     assert(j == pinyin.length);
-    print("Resul $result");
     return result;
   }
 

@@ -30,7 +30,7 @@ extern "C"
     AAssetManager *mgr = AAssetManager_fromJava(env, assetManager);
 
     if(!mgr) {
-      __android_log_print(ANDROID_LOG_VERBOSE, "asrbridge", "Error retrieving asset manager");
+      __android_log_print(ANDROID_LOG_VERBOSE, "tflite_tts", "Error retrieving asset manager");
       return -1;
     }
 
@@ -47,6 +47,8 @@ extern "C"
       return -1;
     }
     vocoder = new istream(vocoder_s);
+
+   
     initialize(melgen, vocoder, melgen_s->size(), vocoder_s->size());
 
     env->ReleaseStringUTFChars(jmelgenFile, melgenFilename_c);
@@ -58,10 +60,13 @@ extern "C"
   {
     const char *outfile_c = env->GetStringUTFChars(joutfile, 0);
     jint numTokens = env->GetArrayLength(jtokenIds);
+    __android_log_print(ANDROID_LOG_VERBOSE, "tflite_tts", "Num tokens %d", numTokens);
     int tokenIds[numTokens];
     jint *body = env->GetIntArrayElements(jtokenIds, 0);
-    for (int i = 0; i < numTokens; i++)
+    for (int i = 0; i < numTokens; i++) {
       tokenIds[i] = body[i];
+      __android_log_print(ANDROID_LOG_VERBOSE, "tflite_tts", "Got token id %d", tokenIds[i]);
+    }
 
     int retCode = synthesize(numTokens, tokenIds, outfile_c);
     env->ReleaseIntArrayElements(jtokenIds, body, 0);

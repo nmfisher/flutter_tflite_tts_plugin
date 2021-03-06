@@ -13,7 +13,7 @@ int initialize(istream* const melgen, istream* const  vocoder, streamsize melgen
     std::cout << "Creating TTS backend." << std::endl;
     ttsbackend = new TTSBackend(melgen, vocoder,melgen_length, vocoder_length);
     if(!ttsbackend)
-        return -1;
+         return -1;
     return 0;
 }
 

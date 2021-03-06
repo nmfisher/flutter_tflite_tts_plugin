@@ -10,17 +10,22 @@ using namespace std;
 class TTSBackend
 {
 public:
+    TTSBackend(const char* melgenfile, const char* vocoderfile) {
+            melgen = new MelGenerateTF(melgenfile);
+            vocoder = new VocoderTF(vocoderfile);        
+
+               };
     TTSBackend(istream *const melgen_s, istream *const vocoder_s, streamsize melgen_size, streamsize vocoder_size)
     {
-        std::vector<char> melgen_b(melgen_size);
+        std::vector<char> *melgen_b = new std::vector<char>(melgen_size);
 
-        if (!melgen_s->read(melgen_b.data(), melgen_size))
+        if (!melgen_s->read(melgen_b->data(), melgen_size))
             return;
-        std::vector<char> vocoder_b(vocoder_size);
-        if (!vocoder_s->read(vocoder_b.data(), vocoder_size))
+        std::vector<char> *vocoder_b = new std::vector<char>(vocoder_size);
+        if (!vocoder_s->read(vocoder_b->data(), vocoder_size))
             return;
-        melgen = new MelGenerateTF(melgen_b.data(), melgen_size);
-        vocoder = new VocoderTF(vocoder_b.data(), vocoder_size);
+        melgen = new MelGenerateTF(melgen_b->data(), melgen_size);
+        vocoder = new VocoderTF(vocoder_b->data(), vocoder_size);
     };
 
     void inference(std::vector<int32_t> phonesIds);
