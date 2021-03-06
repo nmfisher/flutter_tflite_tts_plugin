@@ -41,7 +41,8 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
       var retCode = initialize(am, "flutter_assets/assets/fastspeech2_quan.tflite", "flutter_assets/assets/mb_melgan.tflite");
       result.success(retCode);
     } else if(call.method == "synthesize") {
-      var retCode = synthesize(call.argument<List<Int>>("symbolIds")!!, call.argument<String>("outfile")!!);
+      var symbolIds = call.argument<List<Int>>("symbolIds")!!;
+      var retCode = synthesize(symbolIds.toIntArray(), call.argument<String>("outfile")!!);
       result.success(retCode);
     } else {
       result.notImplemented()
@@ -53,5 +54,5 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
   }
   
   external fun initialize(mgr: AssetManager, melgenAssetPath: String, vocoderAssetPath: String) : Int;
-  external fun synthesize(tokenIds: List<Int>, outfile:String) : Int;
+  external fun synthesize(tokenIds: IntArray, outfile:String) : Int;
 }
