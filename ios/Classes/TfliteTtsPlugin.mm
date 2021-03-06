@@ -54,13 +54,19 @@ static ifstream* vocoder_s;
     } else if([@"synthesize" isEqualToString:call.method]) {
 
         NSString* outfile = call.arguments[@"outfile"];
+        NSLog(@"Got outfile %@", outfile);
+        NSMutableArray* ns_symbolIds = call.arguments[@"symbolIds"];
+        int numSymbols = [ns_symbolIds count];
+        NSLog(@"count %d", numSymbols);
 
-        FlutterStandardTypedData* tokenIds = [FlutterStandardTypedData typedDataWithInt32:call.arguments[@"symbolIds"]];
-        UInt32 numTokens = [tokenIds elementSize];
-        int tokenIds_int[numTokens];
-        [[tokenIds data] getBytes:tokenIds_int length:numTokens * sizeof(int)];
-        NSLog(@"Synthesizing %u tokens to %@", numTokens, outfile);
-        int retCode = synthesize(numTokens, tokenIds_int, [outfile UTF8String]);
+        int symbolIds[numSymbols];
+        int i = 0;
+        for(id symbolId in ns_symbolIds) {
+            symbolIds[i] = [symbolId intValue];
+          i++;
+        }
+        
+        int retCode = synthesize(numSymbols, symbolIds, [outfile fileSystemRepresentation]);
         result([NSNumber numberWithInt:retCode]);
     } else {
       NSLog(@"Invalid method : %@", call.method);

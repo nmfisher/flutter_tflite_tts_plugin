@@ -76,7 +76,6 @@ class _MyAppState extends State<MyApp> {
                 : () async {
                     var symbolIds =
                         _preprocessor.textToSequence("你好", ["ni3", "hao3"]);
-                        print("Got symbol ids $symbolIds");
                     var file = await _tts.synthesize(symbolIds);
                     _advancedPlayer.play(file.path);
                   },
@@ -86,4 +85,3 @@ class _MyAppState extends State<MyApp> {
     );
   }
 }
-
