@@ -29,7 +29,10 @@ static ifstream* vocoder_s;
 
   [channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
     if ([@"initialize" isEqualToString:call.method]) {
-      NSString* key = [registrar lookupKeyForAsset:@"assets/fastspeech2_quan.tflite"];
+      NSString* melgenAssetPath = call.arguments[@"melgenAssetPath"]; // @"assets/fastspeech2_quan.tflite"
+      NSString* vocoderAssetPath = call.arguments[@"vocoderAssetPath"];// @"assets/mb_melgan.tflite"
+
+      NSString* key = [registrar lookupKeyForAsset:melgenAssetPath];
       NSString* path = [[NSBundle mainBundle] pathForResource:key ofType:nil];
       melgen_s = new ifstream([path fileSystemRepresentation], ios_base::binary);
       struct stat sb;
@@ -37,7 +40,7 @@ static ifstream* vocoder_s;
       stat([path fileSystemRepresentation], &sb);
       long melgen_size = sb.st_size;
 
-      key = [registrar lookupKeyForAsset:@"assets/mb_melgan.tflite"];
+      key = [registrar lookupKeyForAsset:vocoderAssetPath]; 
       path = [[NSBundle mainBundle] pathForResource:key ofType:nil];
       
       vocoder_s = new ifstream([path fileSystemRepresentation], ios_base::binary);
@@ -54,10 +57,8 @@ static ifstream* vocoder_s;
     } else if([@"synthesize" isEqualToString:call.method]) {
 
         NSString* outfile = call.arguments[@"outfile"];
-        NSLog(@"Got outfile %@", outfile);
         NSArray* ns_symbolIds = call.arguments[@"symbolIds"];
         int numSymbols = [ns_symbolIds count];
-        NSLog(@"count %d", numSymbols);
 
         int symbolIds[numSymbols];
         int i = 0;
