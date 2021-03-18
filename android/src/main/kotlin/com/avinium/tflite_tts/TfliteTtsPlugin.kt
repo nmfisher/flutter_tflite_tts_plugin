@@ -37,8 +37,11 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
   override fun onMethodCall(@NonNull call: MethodCall, @NonNull result: Result) {
 
     if (call.method == "initialize") {
-      var am = context.getAssets();                       
-      var retCode = initialize(am, "flutter_assets/assets/fastspeech2_quan.tflite", "flutter_assets/assets/mb_melgan.tflite");
+      var am = context.getAssets();                
+      var melgenAssetPath = call.argument<String>("melgenAssetPath")!!;        // assets/fastspeech2_quan.tflite"
+      var vocoderAssetPath = call.argument<String>("vocoderAssetPath")!!;       // assets/mb_melgan.tflite
+      
+      var retCode = initialize(am, "flutter_assets/" + melgenAssetPath, "flutter_assets/" + vocoderAssetPath);
       result.success(retCode);
     } else if(call.method == "synthesize") {
       var symbolIds = call.argument<List<Int>>("symbolIds")!!;
