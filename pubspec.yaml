@@ -9,13 +9,11 @@ environment:
   flutter: ">=1.20.0"
 
 dependencies:
-  plugin_platform_interface: ^1.0.1
+  plugin_platform_interface: ^2.0.0
   flutter:
     sdk: flutter
-  path_provider: ^1.6.27
+  path_provider: ^2.0.0
   path: 
-  audioplayers:
-    path: ../audioplayers/audioplayers
   tuple: ^1.0.3
   flutter_mmap_stream:
     #git:
