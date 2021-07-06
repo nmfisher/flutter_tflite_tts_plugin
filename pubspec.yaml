@@ -16,9 +16,8 @@ dependencies:
   path: 
   tuple: ^2.0.0
   flutter_mmap_stream:
-    #git:
-    #  url: git@github.com:nmfisher/flutter_mmap_stream.git
-    path: ../flutter_mmap_stream
+    git:
+      url: git@github.com:nmfisher/flutter_mmap_stream.git
 
 dev_dependencies:
   flutter_test:
