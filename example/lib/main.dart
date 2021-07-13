@@ -50,7 +50,8 @@ class _MyAppState extends State<MyApp> {
                 setState(() {
                   _initialized = false;
                 });
-                await _tts.initialize();
+                await _tts.initialize("assets/fastspeech2_quan.tflite",
+                    "assets/mb_melgan.tflite");
                 setState(() {
                   _initialized = true;
                 });
