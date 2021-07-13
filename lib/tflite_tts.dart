@@ -12,9 +12,7 @@ class TfliteTts {
 
   bool _initialized = false;
 
-  Future initialize(
-      {String melgenAssetPath = "assets/lightspeech_quan.tflite",
-      String vocoderAssetPath = "assets/mb_melgan.tflite"}) async {
+  Future initialize(String melgenAssetPath, String vocoderAssetPath) async {
     if (_initialized) return;
     _tempDir = (await getTemporaryDirectory()).path;
 
