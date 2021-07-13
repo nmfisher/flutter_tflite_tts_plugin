@@ -14,13 +14,13 @@ dependencies:
     sdk: flutter
   path_provider: ^1.6.27
   path: 
-  audioplayers:
-    path: ../audioplayers/audioplayers
   tuple: ^1.0.3
   flutter_mmap_stream:
-    #git:
-    #  url: git@github.com:nmfisher/flutter_mmap_stream.git
-    path: ../flutter_mmap_stream
+    git:
+      url: git@github.com:nmfisher/flutter_mmap_stream.git
+  flutter_tflite:
+    git:
+      url: git@github.com:nmfisher/flutter_tflite.git
 
 dev_dependencies:
   flutter_test:
