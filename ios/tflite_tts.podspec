@@ -21,10 +21,9 @@ A new flutter plugin project.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.xcconfig = { 
     'ALWAYS_SEARCH_USER_PATHS' => 'YES',
-    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src" "${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/include" "${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src/tensorflowtts"',
-    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/lib',
-    'OTHER_LDFLAGS' => '-L${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/lib -ltensorflowlite'
+    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src" "${PODS_ROOT}/../.symlinks/plugins/flutter_tflite/ios/include" "${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src/tensorflowtts"',
+    'LIBRARY_SEARCH_PATHS' => '${PODS_ROOT}/../.symlinks/plugins/flutter_tflite/ios/lib',
+    'OTHER_LDFLAGS' => '-ltensorflowlite'
   }
-  s.vendored_libraries = "libtensorflowlite.dylib"
   s.swift_version = '5.0'
 end
