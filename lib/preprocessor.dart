@@ -2,9 +2,9 @@ import 'dart:convert';
 import 'package:tuple/tuple.dart';
 
 class Preprocessor {
-  Map<String, dynamic> _mapper;
-  int _eosId;
-  
+  late Map<String, dynamic> _mapper;
+  late int _eosId;
+
   Preprocessor(String mapperJson) {
     _mapper = json.decode(mapperJson);
     _eosId = _symbolToId(_eos[0]);
@@ -14,9 +14,8 @@ class Preprocessor {
     return _mapper["symbol_to_id"][symbol];
   }
 
-  Tuple2<String, String> _pinyinDict(String pinyin) {
-    if(!_mapper["pinyin_dict"].containsKey(pinyin))
-      return null;
+  Tuple2<String, String>? _pinyinDict(String pinyin) {
+    if (!_mapper["pinyin_dict"].containsKey(pinyin)) return null;
     return Tuple2.fromList(_mapper["pinyin_dict"][pinyin]);
   }
 
@@ -95,7 +94,7 @@ class Preprocessor {
   static List<String> BAKER_SYMBOLS = _pad +
       _pause +
       _initials +
-      _finals.map((i) => _tones.map((j) => i + j)).expand((x) => x) +
+      _finals.expand((i) => _tones.map((j) => i + j)).toList() +
       _eos;
 
   static RegExp zhPattern = RegExp("[\u4e00-\u9fa5]");
@@ -108,7 +107,7 @@ class Preprocessor {
     character = character.replaceAll("#4", "");
     int charLen = character.length;
     int i = 0, j = 0;
-    
+
     var result = ["sil"];
     while (i < charLen) {
       var curChar = character[i];
@@ -120,7 +119,7 @@ class Preprocessor {
           var tone = pinyin[j][pinyin[j].length - 1];
           var p = _pinyinDict(pinyin[j].substring(0, pinyin[j].length - 1));
 
-          result += [ p.item1, p.item2 + tone, "er5"];
+          result += [p!.item1, p.item2 + tone, "er5"];
           if (i + 2 < charLen && character[i + 2] != "#") result.add("#0");
           i += 2;
           j += 1;
@@ -128,7 +127,7 @@ class Preprocessor {
           var tone = pinyin[j][pinyin[j].length - 1];
           var p = _pinyinDict(pinyin[j].substring(0, pinyin[j].length - 1));
 
-          result += [p.item1, p.item2 + tone];
+          result += [p!.item1, p.item2 + tone];
 
           if (i + 1 < charLen && character[i + 1] != "#") result.add("#0");
           i += 1;

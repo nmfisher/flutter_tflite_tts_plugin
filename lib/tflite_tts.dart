@@ -8,7 +8,7 @@ class TfliteTts {
   static const MethodChannel _channel =
       const MethodChannel('com.avinium.tflite_tts');
 
-  String _tempDir;
+  late String _tempDir;
 
   bool _initialized = false;
 
@@ -29,7 +29,7 @@ class TfliteTts {
     return true;
   }
 
-  Future<File> synthesize(List<int> symbolIds, {String outfile}) async {
+  Future<File> synthesize(List<int> symbolIds, {String? outfile}) async {
     outfile = outfile ?? p.join(_tempDir, "synthesized.wav");
     var success = await _channel.invokeMethod(
         "synthesize", {"symbolIds": symbolIds, "outfile": outfile});
