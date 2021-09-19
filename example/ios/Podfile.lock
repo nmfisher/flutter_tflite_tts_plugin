@@ -1,0 +1,47 @@
+PODS:
+  - audioplayers (0.0.1):
+    - Flutter
+  - Flutter (1.0.0)
+  - flutter_mmap_stream (0.0.1):
+    - Flutter
+  - flutter_tflite (0.0.3):
+    - Flutter
+  - path_provider (0.0.1):
+    - Flutter
+  - tflite_tts (0.0.1):
+    - Flutter
+    - flutter_tflite
+
+DEPENDENCIES:
+  - audioplayers (from `.symlinks/plugins/audioplayers/ios`)
+  - Flutter (from `Flutter`)
+  - flutter_mmap_stream (from `.symlinks/plugins/flutter_mmap_stream/ios`)
+  - flutter_tflite (from `.symlinks/plugins/flutter_tflite/ios`)
+  - path_provider (from `.symlinks/plugins/path_provider/ios`)
+  - tflite_tts (from `.symlinks/plugins/tflite_tts/ios`)
+
+EXTERNAL SOURCES:
+  audioplayers:
+    :path: ".symlinks/plugins/audioplayers/ios"
+  Flutter:
+    :path: Flutter
+  flutter_mmap_stream:
+    :path: ".symlinks/plugins/flutter_mmap_stream/ios"
+  flutter_tflite:
+    :path: ".symlinks/plugins/flutter_tflite/ios"
+  path_provider:
+    :path: ".symlinks/plugins/path_provider/ios"
+  tflite_tts:
+    :path: ".symlinks/plugins/tflite_tts/ios"
+
+SPEC CHECKSUMS:
+  audioplayers: 455322b54050b30ea4b1af7cd9e9d105f74efa8c
+  Flutter: 50d75fe2f02b26cc09d224853bb45737f8b3214a
+  flutter_mmap_stream: ce1d9a8e3a7ca8c919a93efa6987b8196f494adb
+  flutter_tflite: da572b8861defaae742626ace760bd40a3473ac2
+  path_provider: abfe2b5c733d04e238b0d8691db0cfd63a27a93c
+  tflite_tts: 74e41e15fe31a2b6731c9603f1738e6a57ecaf9b
+
+PODFILE CHECKSUM: 96a0047845f962487b194a3aa86ff7b33aa09ba1
+
+COCOAPODS: 1.10.2

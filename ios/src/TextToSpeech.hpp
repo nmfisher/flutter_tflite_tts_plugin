@@ -2,9 +2,8 @@
 #include <iostream>
 #include <iterator>
 #include <vector>
-#include "VoxCommon.h"
-#include "TTSFrontend.h"
-#include "TTSBackend.h"
+
+#include "TfliteBase.h"
 
 using namespace std;
 

@@ -1,7 +1,7 @@
 #ifndef VOCODERTF_H
 #define VOCODERTF_H
-
 #include "TfliteBase.h"
+#include "MelGenerateTF.h"
 
 class VocoderTF : public TfliteBase
 {

@@ -1,19 +1,12 @@
 #import "TfliteTtsPlugin.h"
-#if __has_include(<tflite_tts/tflite_tts-Swift.h>)
-#import <tflite_tts/tflite_tts-Swift.h>
-#else
-// Support project import fallback if the generated compatibility header
-// is not copied when this plugin is created as a library.
-// https://forums.swift.org/t/swift-static-libraries-dont-copy-generated-objective-c-header/19816
-#import "tflite_tts-Swift.h"
-#endif
 
 #include <fcntl.h>
 #include <sys/types.h>
 #include <sys/stat.h>
 
 #import <fstream> 
-#import "synthesize.hpp"
+
+#include "TextToSpeech.hpp"
 
 using namespace std;
 
@@ -22,7 +15,6 @@ static ifstream* vocoder_s;
 
 @implementation TfliteTtsPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftTfliteTtsPlugin registerWithRegistrar:registrar];
   FlutterMethodChannel* channel =
       [FlutterMethodChannel methodChannelWithName:@"com.avinium.tflite_tts"
                                   binaryMessenger:[registrar messenger]];
