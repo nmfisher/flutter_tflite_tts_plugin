@@ -1,3 +1,4 @@
+import 'dart:convert';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
@@ -5,8 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:tflite_tts/preprocessor.dart';
-import 'package:tflite_tts/tflite_tts.dart';
+import 'package:tflite_tts/tts_plugin.dart';
 
 void main() {
   runApp(MyApp());
@@ -20,19 +20,25 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   AudioPlayer _advancedPlayer = AudioPlayer();
 
-  TfliteTts _tts = TfliteTts();
+  late TTSPlugin _ttsPlugin;
   bool _initialized = false;
   TextEditingController _pinyinController = TextEditingController();
   TextEditingController _charController = TextEditingController();
-  Preprocessor _preprocessor;
 
   @override
   void initState() {
-    rootBundle.loadString("assets/baker_mapper.json").then((p) {
-      _preprocessor = Preprocessor(p);
-    });
-
+    _initialize();
     super.initState();
+  }
+
+  void _initialize() async {
+    final config = await rootBundle.loadString("assets/tts_config.json");
+    getTemporaryDirectory().then((dir) {
+      _ttsPlugin = TTSPlugin(
+        TTSPluginConfiguration.fromJson("assets", json.decode(config)),
+        dir.path,
+      );
+    });
   }
 
   @override
@@ -44,14 +50,13 @@ class _MyAppState extends State<MyApp> {
         ),
         body: Center(
             child: Column(children: [
-          RaisedButton(
+          ElevatedButton(
               child: Text("INITIALIZE"),
               onPressed: () async {
                 setState(() {
                   _initialized = false;
                 });
-                await _tts.initialize("assets/fastspeech2_quan.tflite",
-                    "assets/mb_melgan.tflite");
+                await _ttsPlugin.initialize();
                 setState(() {
                   _initialized = true;
                 });
@@ -70,14 +75,13 @@ class _MyAppState extends State<MyApp> {
           //     labelText: 'Pinyin',
           //   ),
           // ),
-          RaisedButton(
+          ElevatedButton(
             child: Text("SYNTHESIZE"),
             onPressed: _initialized == false
                 ? null
                 : () async {
-                    var symbolIds =
-                        _preprocessor.textToSequence("你好", ["ni3", "hao3"]);
-                    var file = await _tts.synthesize(symbolIds);
+                    var file = await _ttsPlugin
+                        .synthesize("你好", pronunciation: ["ni3", "hao3"]);
                     _advancedPlayer.play(file.path);
                   },
           ),

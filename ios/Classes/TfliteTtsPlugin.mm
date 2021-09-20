@@ -16,13 +16,13 @@ static ifstream* vocoder_s;
 @implementation TfliteTtsPlugin
 + (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
   FlutterMethodChannel* channel =
-      [FlutterMethodChannel methodChannelWithName:@"com.avinium.tflite_tts"
+      [FlutterMethodChannel methodChannelWithName:@"app.mimetic.tts"
                                   binaryMessenger:[registrar messenger]];
 
   [channel setMethodCallHandler:^(FlutterMethodCall* call, FlutterResult result) {
     if ([@"initialize" isEqualToString:call.method]) {
-      NSString* melgenAssetPath = call.arguments[@"melgenAssetPath"]; // @"assets/fastspeech2_quan.tflite"
-      NSString* vocoderAssetPath = call.arguments[@"vocoderAssetPath"];// @"assets/mb_melgan.tflite"
+      NSString* melgenAssetPath = call.arguments[@"melgenAssetPath"]; 
+      NSString* vocoderAssetPath = call.arguments[@"vocoderAssetPath"];
 
       NSString* key = [registrar lookupKeyForAsset:melgenAssetPath];
       NSString* path = [[NSBundle mainBundle] pathForResource:key ofType:nil];

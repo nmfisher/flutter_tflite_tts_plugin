@@ -12,7 +12,6 @@ import io.flutter.plugin.common.PluginRegistry.Registrar
 import android.content.res.AssetManager
 import android.content.Context;
 
-/** IncredibleTtsPlugin */
 class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
   /// The MethodChannel that will the communication between Flutter and native Android
   ///
@@ -29,7 +28,7 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "com.avinium.tflite_tts")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "app.mimetic.tflite_tts")
     channel.setMethodCallHandler(this)
     context = flutterPluginBinding.applicationContext
   }

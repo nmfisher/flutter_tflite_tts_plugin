@@ -28,10 +28,5 @@ A new flutter plugin project.
   s.user_target_xcconfig = {
     'OTHER_LDFLAGS' => '$(inherited)'
   }
-  #s.xcconfig = { 
-  #  'ALWAYS_SEARCH_USER_PATHS' => "YES",  
-    #"OTHER_LDFLAGS" => "-force_load tensorflowlite"
-#    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/include" '
-  #}
   s.swift_version = '5.0'
 end
