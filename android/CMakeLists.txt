@@ -5,7 +5,7 @@ include_directories(../ios/src/tensorflowtts)
 include_directories(../ios/include)
 link_directories(src/main/jniLibs/${ANDROID_ABI})
 
-string(REPLACE "build\\tflite_tts" "build\\flutter_mmap_stream" FLUTTER_MMAP_BUILD_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
+string(REPLACE "build\\flutter_tflite_tts_plugin" "build\\flutter_mmap_stream" FLUTTER_MMAP_BUILD_DIR ${CMAKE_LIBRARY_OUTPUT_DIRECTORY})
 link_directories(${FLUTTER_MMAP_BUILD_DIR})
 
 add_library( libmmap_stream_android SHARED IMPORTED )

@@ -1,4 +1,4 @@
-package com.avinium.tflite_tts
+package com.avinium.flutter_tflite_tts_plugin
 
 import androidx.annotation.NonNull
 
@@ -28,7 +28,7 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
   }
 
   override fun onAttachedToEngine(@NonNull flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "app.mimetic.tflite_tts")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "app.mimetic.flutter_tflite_tts_plugin")
     channel.setMethodCallHandler(this)
     context = flutterPluginBinding.applicationContext
   }

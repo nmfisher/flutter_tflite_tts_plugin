@@ -1,4 +1,4 @@
-package com.avinium.tflite_tts_example
+package com.avinium.flutter_tflite_tts_plugin_example
 
 import io.flutter.embedding.android.FlutterActivity
 

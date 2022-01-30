@@ -1,4 +1,4 @@
-name: tflite_tts
+name: flutter_tflite_tts_plugin
 description: A Flutter plugin for text-to-speech from a TFLite model.
 version: 0.0.1
 author:
@@ -34,6 +34,6 @@ flutter:
         pluginClass: TfliteTtsPlugin
       android:
         pluginClass: TfliteTtsPlugin
-        package: com.avinium.tflite_tts
+        package: com.avinium.flutter_tflite_tts_plugin
 
   

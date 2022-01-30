@@ -398,7 +398,7 @@
 					"-framework",
 					"\"path_provider\"",
 					"-framework",
-					"\"tflite_tts\"",
+					"\"flutter_tflite_tts_plugin\"",
 					"-v",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
@@ -549,7 +549,7 @@
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/flutter_mmap_stream/flutter_mmap_stream.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/flutter_tflite/flutter_tflite.framework/Headers\"",
 					"\"${PODS_CONFIGURATION_BUILD_DIR}/path_provider/path_provider.framework/Headers\"",
-					"\"${PODS_CONFIGURATION_BUILD_DIR}/tflite_tts/tflite_tts.framework/Headers\"",
+					"\"${PODS_CONFIGURATION_BUILD_DIR}/flutter_tflite_tts_plugin/flutter_tflite_tts_plugin.framework/Headers\"",
 					"\"${PODS_ROOT}/../.symlinks/plugins/flutter_tflite/ios/include\"",
 				);
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -575,7 +575,7 @@
 					"-framework",
 					"\"path_provider\"",
 					"-framework",
-					"\"tflite_tts\"",
+					"\"flutter_tflite_tts_plugin\"",
 					"-v",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;
@@ -634,7 +634,7 @@
 					"-framework",
 					"\"path_provider\"",
 					"-framework",
-					"\"tflite_tts\"",
+					"\"flutter_tflite_tts_plugin\"",
 					"-v",
 				);
 				PRESERVE_DEAD_CODE_INITS_AND_TERMS = NO;

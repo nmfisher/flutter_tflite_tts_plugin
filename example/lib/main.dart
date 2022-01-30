@@ -6,7 +6,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:path/path.dart' as p;
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
-import 'package:tflite_tts/tts_plugin.dart';
+import 'package:flutter_tflite_tts_plugin/tts_plugin.dart';
 
 void main() {
   runApp(MyApp());
@@ -35,8 +35,8 @@ class _MyAppState extends State<MyApp> {
     final config = await rootBundle.loadString("assets/tts_config.json");
     getTemporaryDirectory().then((dir) {
       _ttsPlugin = TTSPlugin(
-        TTSPluginConfiguration.fromJson("assets", json.decode(config)),
-        dir.path,
+        TTSPluginConfiguration.fromJson(
+            "assets", dir.path, json.decode(config)),
       );
     });
   }

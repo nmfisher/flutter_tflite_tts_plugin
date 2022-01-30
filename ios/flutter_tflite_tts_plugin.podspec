@@ -3,7 +3,7 @@
 # Run `pod lib lint incredible_tts.podspec' to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'tflite_tts'
+  s.name             = 'flutter_tflite_tts_plugin'
   s.version          = '0.0.1'
   s.summary          = 'A new flutter plugin project.'
   s.description      = <<-DESC
@@ -22,11 +22,11 @@ A new flutter plugin project.
   s.pod_target_xcconfig = { 
     'DEFINES_MODULE' => 'YES', 
     'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386',
-    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../.symlinks/plugins/flutter_tflite/ios/include" ${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src "${PODS_ROOT}/../.symlinks/plugins/tflite_tts/ios/src/tensorflowtts"',   
-    'OTHER_LDFLAGS' => '$(inherited) -ltensorflowlite'
+    'USER_HEADER_SEARCH_PATHS' => '"${PODS_ROOT}/../.symlinks/plugins/flutter_tflite/ios/include" "${PODS_ROOT}/../.symlinks/plugins/flutter_tflite_tts_plugin/ios/src" "${PODS_ROOT}/../.symlinks/plugins/flutter_tflite_tts_plugin/ios/src/tensorflowtts" "$(inherited)"',   
+    'OTHER_LDFLAGS' => '$(inherited) -ltensorflowlite $(inherited)'
   }
   s.user_target_xcconfig = {
-    'OTHER_LDFLAGS' => '$(inherited)'
+    'OTHER_LDFLAGS' => '$(inherited) -ltensorflowlite $(inherited)'
   }
   s.swift_version = '5.0'
 end

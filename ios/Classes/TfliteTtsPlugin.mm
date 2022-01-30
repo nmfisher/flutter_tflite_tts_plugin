@@ -26,6 +26,10 @@ static ifstream* vocoder_s;
 
       NSString* key = [registrar lookupKeyForAsset:melgenAssetPath];
       NSString* path = [[NSBundle mainBundle] pathForResource:key ofType:nil];
+      if(!path) {
+        NSLog(@"Couldn't find model at path %@", key);
+        exit(-1);
+      }
       melgen_s = new ifstream([path fileSystemRepresentation], ios_base::binary);
       struct stat sb;
 
@@ -61,6 +65,9 @@ static ifstream* vocoder_s;
         
         int retCode = synthesize(numSymbols, symbolIds, [outfile fileSystemRepresentation]);
         result([NSNumber numberWithInt:retCode]);
+    } else if([@"dispose" isEqualToString:call.method]) {
+
+    
     } else {
       NSLog(@"Invalid method : %@", call.method);
       result(FlutterMethodNotImplemented);

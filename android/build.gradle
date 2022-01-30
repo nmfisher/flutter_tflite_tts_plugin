@@ -1,4 +1,4 @@
-group 'com.avinium.tflite_tts'
+group 'com.avinium.flutter_tflite_tts_plugin'
 version '1.0-SNAPSHOT'
 
 buildscript {
