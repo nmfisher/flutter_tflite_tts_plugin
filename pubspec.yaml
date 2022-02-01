@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   path_provider: ^2.0.0
   path: 
-  tuple: ^1.0.3
+  tuple: ^2.0.0
   flutter_mmap_stream:
     #git:
     #  url: git@github.com:nmfisher/flutter_mmap_stream.git
