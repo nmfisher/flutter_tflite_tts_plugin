@@ -1,6 +1,6 @@
-# tflite_tts_example
+# flutter_tflite_tts_plugin_example
 
-Demonstrates how to use the tflite_tts plugin.
+Demonstrates how to use the flutter_tflite_tts_plugin plugin.
 
 ## Getting Started
 

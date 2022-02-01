@@ -1,3 +1,0 @@
-[submodule "ios/include/mmap"]
-	path = ios/include/mmap
-	url = git@github.com:nmfisher/mmap_stream.git

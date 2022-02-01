@@ -11,10 +11,9 @@ class TTSBackend
 {
 public:
     TTSBackend(const char* melgenfile, const char* vocoderfile) {
-            melgen = new MelGenerateTF(melgenfile);
-            vocoder = new VocoderTF(vocoderfile);        
-
-               };
+        melgen = new MelGenerateTF(melgenfile);
+        vocoder = new VocoderTF(vocoderfile);
+   };
     TTSBackend(istream *const melgen_s, istream *const vocoder_s, streamsize melgen_size, streamsize vocoder_size)
     {
         std::vector<char> *melgen_b = new std::vector<char>(melgen_size);

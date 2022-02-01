@@ -1,0 +1,5 @@
+{
+    "melgenPath":"fastspeech2_quan.tflite",
+    "vocoderPath":"mb_melgan.tflite",
+    "preprocessor":"baker"
+}

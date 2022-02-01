@@ -3,6 +3,13 @@
 
 #include "TfliteBase.h"
 
+typedef struct 
+{
+    float *melData;
+    std::vector<int32_t> melShape;
+    int32_t bytes;
+} MelGenData;
+
 class MelGenerateTF : public TfliteBase
 {
 public:
