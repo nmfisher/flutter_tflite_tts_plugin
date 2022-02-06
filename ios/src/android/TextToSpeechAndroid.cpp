@@ -5,10 +5,10 @@
 #include <iterator>
 #include <vector>
 #include "VoxCommon.h"
-#include "TTSFrontend.h"
 #include "TTSBackend.h"
+#include "mmap/mmap_stream.hpp"
 #include "mmap/mmap_stream_android.hpp"
-#include "synthesize.hpp"
+#include "TextToSpeech.hpp"
 #include <iostream>
 #include <jni.h>
 

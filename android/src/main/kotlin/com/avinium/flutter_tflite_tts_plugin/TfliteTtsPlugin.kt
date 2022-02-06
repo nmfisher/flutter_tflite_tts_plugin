@@ -23,7 +23,7 @@ class TfliteTtsPlugin: FlutterPlugin, MethodCallHandler {
 
   companion object {
     init {
-      System.loadLibrary("tts");
+      System.loadLibrary("tflite_tts");
     }
   }
 
